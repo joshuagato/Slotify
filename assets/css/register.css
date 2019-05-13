@@ -7,6 +7,7 @@ html, body{
 #background{
     background-color: #000;
 	background-image: url(../images/bg.jpg);
+    /*background-image: url(../images/bg.png);*/
 	background-position: center;
 	background-size: cover;
 	display: table;
@@ -73,7 +74,19 @@ html, body{
     border-bottom: 1px solid white;
     height: 27px;
     width: 100%;
+    outline: none; /*I added this line of code on my own*/
 }
+
+/*I added this block of code on my own*/
+#inputContainer input[type="text"]:focus,
+#inputContainer input[type="text"]:active,
+#inputContainer input[type="email"]:focus,
+#inputContainer input[type="email"]:active,
+#inputContainer input[type="password"]:focus,
+#inputContainer input[type="password"]:active{
+    
+}
+
 
 #inputContainer label{
     color: #fff;

@@ -1,5 +1,5 @@
  <?php
- 	ob_start();
+ 	ob_start(); //object buffering
  	session_start();
 
  	$timezone = date_default_timezone_set("Africa/Accra");

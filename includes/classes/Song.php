@@ -29,12 +29,16 @@
 			return $this->title;
 		}
 
-		public function artist(){
-			return new Artist($this->con, $this->artistId)
+		public function getId(){
+			return $this->id;
+		}
+
+		public function getArtist(){
+			return new Artist($this->con, $this->artistId);
 		}
 
 		public function getAlbum(){
-			return new Album($this->con, $this->albumId)
+			return new Album($this->con, $this->albumId);
 		}
 
 		public function getPath(){
