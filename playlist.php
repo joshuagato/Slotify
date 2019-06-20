@@ -50,7 +50,8 @@ include("includes/includedFiles.php");
 								<span class='artistName'>" . $songArtist->getName() . "</span>
 							</div>
 							<div class='trackOptions'>
-								<img class='optionsButton' src='assets/images/icons/more.png'>
+								<input type='hidden' class='songId' value='" . $playlistSong->getId() . "'>
+								<img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionsMenu(this)'>
 							</div>
 							<div class='trackDuration'>
 								<span class='duration'>" . $playlistSong->getDuration() . "</span>
@@ -67,6 +68,12 @@ include("includes/includedFiles.php");
 
 		</ul>
 	</div>
+	
+	<nav class="optionsMenu">
+		<input type="hidden" class="songId"> <!-- (this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element -->
+		<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
+		<div class="item" onclick="removeFromPlaylist(this, '<?php echo $playlistId ?>')">Remove from Playlist</div>
+	</nav>
 
 
 <!-- The Footer -->

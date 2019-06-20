@@ -78,13 +78,25 @@ html, body{
 }
 
 /*I added this block of code on my own*/
-#inputContainer input[type="text"]:focus,
+/* #inputContainer input[type="text"]:focus, */
 #inputContainer input[type="text"]:active,
-#inputContainer input[type="email"]:focus,
+#inputContainer input[type="text"]:enabled,
+
+/* #inputContainer input[type="email"]:focus, */
 #inputContainer input[type="email"]:active,
-#inputContainer input[type="password"]:focus,
-#inputContainer input[type="password"]:active{
-    
+#inputContainer input[type="email"]:enabled,
+
+/* #inputContainer input[type="password"]:focus, */
+#inputContainer input[type="password"]:active,
+#inputContainer input[type="password"]:enabled {
+    display: block;
+    height: 27px;
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid white;
+    color: red;
 }
 
 

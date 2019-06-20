@@ -16,6 +16,8 @@
 	var pauseButton;
 
 
+
+
 	$(document).click(function(click){
 		var target = $(click.target);
 
@@ -25,6 +27,9 @@
 	});
 
 
+
+
+
 	//when the window size does not a permit a scroll bar, this function does not work
 	$(window).scroll(function(){
 		hideOptionsMenu();
@@ -32,40 +37,87 @@
 
 	// Here, "select.playlist" looks for a select html element with class playlist
 	// and when that select is changed, the we execute the proceeding function
-	$(document).on("change", "select.playlist", function(){
+	$(document).on("change", "select.playlist", function() {
+		var select = $(this);
+
 		var playlistId = $(this).val();  //'this', here refers to what 'select' was changed to, i.e the item which was selected and the value of the 'value' attribute will be picked up.
+		// var playlistId = select.val();
 		var songId = $(this).prev(".songId").val();  //(this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element
 		// 'this' in here refers to 'select.playlist'
+		// var songId = select.prev(".songId").val();
 
 		//also, prev takes the immediate previous sibling, whilst 'prevAll' check as many previous siblings as possible
 
 		// console.log('PlaylistId: ' + playlistId);
 		// console.log('SongId: ' + songId);
 
-		// $.post("includes/handlers/ajax/addToPlaylist.php", {playlistId: playlistId, songId: songId})
-		// .done(function(error){
+		$.post("includes/handlers/ajax/addToPlaylist.php", {playlistId: playlistId, songId: songId})
+		.done(function(error){
 
-		// 	if(error != ''){
-		// 		alert(error);
-		// 		// return;
-		// 	}
+			if(error != ''){
+				// alert(error);
+				// return;
+			}
 
-		// 	hideOptionsMenu();
-		// 	$(this).val("");
-		// 	// 'this' in here, refers to callback function 'done(function(error)'
-		// });
+			hideOptionsMenu();
+			select.val("");
+			// 'this' in here, refers to callback function 'done(function(error)'
+		});
 
 	});
 
 
-	function openPage(url){
+
+
+	function updateEmail(emailClass) {
+		var emailValue = $("." + emailClass).val();
+
+		$.post("includes/handlers/ajax/updateEmail.php", { email: emailValue, username: userLoggedIn })
+		.done(function(response) {
+			$("." + emailClass).nextAll(".message").text(response);
+			// $("." + emailClass).nextUntil(".message").text(response);
+		});
+	}
+
+
+
+
+	function updatePassword(oldPasswordClass, newPasswordClass1, newPasswordClass2) {
+		var oldPassword = $("." + oldPasswordClass).val();
+		var newPassword1 = $("." + newPasswordClass1).val();
+		var newPassword2 = $("." + newPasswordClass2).val();
+
+		$.post("includes/handlers/ajax/updatePassword.php", 
+			{ oldPassword: oldPassword,
+				newPassword1: newPassword1,
+				newPassword2: newPassword2,
+				username: userLoggedIn
+			})
+		.done(function(response) {
+			$("." + oldPasswordClass).nextAll(".message").text(response);
+			
+		});
+	}
+
+
+
+	function logout() {
+		$.post("includes/handlers/ajax/logout.php", function() {
+			location.reload();
+		});
+	}
+
+
+
+
+	function openPage(url) {
 
 		// if(timer != null){
 		if(timer != ''){
 			clearTimeout(timer);
 		}
 
-		if(url.indexOf("?") == -1){
+		if(url.indexOf("?") == -1) {
 			url = url + "?";
 		}
 
@@ -91,17 +143,36 @@
 	}
 
 
-	function createPlaylist(){
+
+	function removeFromPlaylist(button, playlistId) {
+		var songId = $(button).prevAll(".songId").val();
+
+		$.post("includes/handlers/ajax/removeFromPlaylist.php", { playlistId: playlistId, songId: songId }).done(function(error){
+				
+			if(error != '') {
+				// alert(error);
+				// return;
+			}
+
+			//do something when ajax returns
+			openPage("playlist.php?id=" + playlistId);  //This one does not work when the return statement is on
+		});
+	}
+
+
+
+
+	function createPlaylist() {
 		var popup = prompt("Please enter the name of your playlist");
 
-		console.log(userLoggedIn);
+		// console.log(userLoggedIn);
 
 		// if(popup != null){
-		if(popup != ''){
+		if(popup != '') {
 			$.post("includes/handlers/ajax/createPlaylist.php", {name: popup, username: userLoggedIn}).done(function(error){
 				
-				if(error != ''){
-					alert(error);
+				if(error != '') {
+					// alert(error);
 					// return;
 				}
 
@@ -114,15 +185,18 @@
 	}
 
 
-	function deletePlaylist(playlistId){
+
+
+
+	function deletePlaylist(playlistId) {
 		var prompt = confirm("Are you sure you want to delete this playlist?");
 
-		if(prompt == true){
+		if(prompt == true) {
 
 			$.post("includes/handlers/ajax/deletePlaylist.php", {playlistId: playlistId}).done(function(error){
 				
-				if(error != ''){
-					alert(error);
+				if(error != '') {
+					// alert(error);
 					// return;
 				}
 
@@ -134,25 +208,34 @@
 		// openPage("yourMusic.php");  //This one also works
 	}
 
-	function hideOptionsMenu(){
+
+
+
+	function hideOptionsMenu() {
 		var menu = $('.optionsMenu');
 
-		if(menu.css("display") != "none"){
+		if(menu.css("display") != "none") {
 			menu.css("display", "none");
 		}
 	}
 
-	function showOptionsMenu(button){
+
+
+
+	function showOptionsMenu(button) {
 
 		var songId = $(button).prevAll(".songId").val();
+		// prev will take just the immediate previous sibling, whilst prevAll will traverse all the previous siblings
+		// however, in our case, both will work
 
-		var menu = $('.optionsMenu');
+		var menu = $(".optionsMenu");
 		// var menu = document.querySelector('.optionsMenu');
 		var menuWidth = menu.width();
 		// var menuWidth = menu.clientWidth;
-		menu.find(".songId").val(songId);
+		menu.find(".songId").val(songId); //this goes into the optionsMenu and find an element with class songId
+
 		// var vlf = menu.find(".songId").val();
-		var vlf = menu.find(".songId");
+		// var vlf = menu.find(".songId");
 
 		// var vvf = $(".optionsMenu input").val(songId);
 		// var valF = menu.find(".songId").val();
@@ -160,16 +243,16 @@
 
 		// console.log(menu.find(".songId").val());
 		// console.log(vlf);
-		console.log(vlf.val());
+		// console.log(vlf.val());
 		// console.log(vvf.val());
 		// console.log($(".optionsMenu input").val());
 		// console.log(menu.find(".songId").val());
 		// console.log(sId.val());
-		console.log($(button).prevAll(".songId").val());
-		console.log(vlf);
+		// console.log($(button).prevAll(".songId").val());
+		// console.log(vlf);
 
 		var scrollTop = $(window).scrollTop(); //Distance from top of window to top of document
-		var elementOffset = $(button).offset().top; //Distance from top of document
+		var elementOffset = $(button).offset().top; //The position of the element, taking it by distance of the item from top of document
 		// var elementOffset = document.querySelector(button).offset();
 
 		var top = elementOffset - scrollTop;
@@ -179,7 +262,10 @@
 	}
 
 
-	function formatTime(seconds){
+
+
+
+	function formatTime(seconds) {
 		var time = Math.round(seconds);
 		var minutes = Math.floor(time / 60);
 		var seconds = time - (minutes * 60);
@@ -194,7 +280,10 @@
 		return minutes + ":" + extraZero + seconds;
 	}
 
-	function updateTimeProgressBar(audio){
+
+
+
+	function updateTimeProgressBar(audio) {
 		document.querySelector('.progressTime.current').textContent = formatTime(audio.currentTime);
 		document.querySelector('.progressTime.remaining').textContent = formatTime(audio.duration - audio.currentTime);
 
@@ -203,65 +292,75 @@
 		// console.log(progress + "%");
 	}
 
-	function updateVolumeProgressBar(audio){
+
+
+
+	function updateVolumeProgressBar(audio) {
 		var volume = audio.volume * 100;
 		document.querySelector('.volumeBar .progress').style.width = volume + '%';
 		// console.log(volume);
 	}
 
-	function playFirstSong(){
+
+
+
+	function playFirstSong() {
 		setTrack(tempPlaylist[0], tempPlaylist, true);
 	}
 
 
-	function Audio(){
+
+
+	function Audio() {
 
 		this.currentlyPlaying;
 		// this.audio = document.createElement = 'audio';
 		this.audio = document.createElement('audio');
 
-		this.audio.addEventListener('ended', function(){
+		this.audio.addEventListener('ended', function() {
 			nextSong();
 		});
 
 		//here, 'this' refers to the object that the event was called on, hence 'audio'
-		this.audio.addEventListener('canplay', function(){
+		this.audio.addEventListener('canplay', function() {
 			var duration = formatTime(this.duration);
 			document.querySelector('.progressTime.remaining').textContent = duration;
 			// document.querySelector('.progressTime.remaining').textContent = formatTime(this.duration);
 		});
 
-		this.audio.addEventListener('timeupdate', function(){
+		this.audio.addEventListener('timeupdate', function() {
 			if (this.duration) {
 				updateTimeProgressBar(this);
 			}
 		});
 
-		this.audio.addEventListener('volumechange', function(){
+		this.audio.addEventListener('volumechange', function() {
 			updateVolumeProgressBar(this);
 		});
 
-		this.setTrack = function(track){
+		this.setTrack = function(track) {
 			this.currentlyPlaying = track;
 			//here, 'this' refers to instance of the Audio class, so we have to say this.audio.src
 			this.audio.src = track.path;
 		}
 
-		this.play = function(){
+		this.play = function() {
 			this.audio.play();
 		}
 
-		this.pause = function(){
+		this.pause = function() {
 			this.audio.pause();
 		}
 
-		this.setTime = function(seconds){
+		this.setTime = function(seconds) {
 			this.audio.currentTime = seconds;
 		}
 	}
 
 
-	function myHttpUpdate(requestVar, url, xid, yid){
+
+
+	function myHttpUpdate(requestVar, url, xid, yid) {
 		requestVar = new XMLHttpRequest();
 		requestVar.open('POST', url);
 		requestVar.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -270,7 +369,7 @@
 
 	
 
-	function myHttpRequest(requestVar, url, xid, yid, selector, jsonVar, jsMethod){
+	function myHttpRequest(requestVar, url, xid, yid, selector, jsonVar, jsMethod) {
 		requestVar = new XMLHttpRequest();
 
 		requestVar.open('POST', url);

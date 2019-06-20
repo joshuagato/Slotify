@@ -58,11 +58,11 @@
 					<p>
 						<?php echo $account->getError(Constants::$loginFailed); ?>
 						<label for="loginUsername">Username</label>
-						<input id="loginUsername" type="text" name="loginUsername" placeholder="e.g joshgato" value="<?php getInputValue('loginUsername') ?>" required>
+						<input id="loginUsername" type="text" name="loginUsername" placeholder="e.g joshgato" value="<?php getInputValue('loginUsername') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<label for="loginPassword">Password</label>
-						<input id="loginPassword" type="password" name="loginPassword" placeholder="Your Password" required>
+						<input id="loginPassword" type="password" name="loginPassword" placeholder="Your Password" autocomplete="off" required>
 					</p>
 					
 					<button type="submit" name="loginButton">LOG IN</button>
@@ -78,39 +78,39 @@
 						<?php echo $account->getError(Constants::$usernameCharacters); ?>
 						<?php echo $account->getError(Constants::$usernameTaken); ?>
 						<label for="username">Username</label>
-						<input id="username" type="text" name="username" placeholder="e.g joshgato" value="<?php getInputValue('username') ?>" required>
+						<input id="username" type="text" name="username" placeholder="e.g joshgato" value="<?php getInputValue('username') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$firstNameCharacters); ?>
 						<label for="firstName">First name</label>
-						<input id="firstName" type="text" name="firstName" placeholder="e.g Joshua" value="<?php getInputValue('firstName') ?>" required>
+						<input id="firstName" type="text" name="firstName" placeholder="e.g Joshua" value="<?php getInputValue('firstName') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$lastNameCharacters); ?>
 						<label for="lastName">Last name</label>
-						<input id="lastName" type="text" name="lastName" placeholder="e.g Gato" value="<?php getInputValue('lastName') ?>" required>
+						<input id="lastName" type="text" name="lastName" placeholder="e.g Gato" value="<?php getInputValue('lastName') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
 						<?php echo $account->getError(Constants::$emailInvalid); ?>
 						<?php echo $account->getError(Constants::$emailTaken); ?>
 						<label for="email">Email</label>
-						<input id="email" type="email" name="email" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email') ?>" required>
+						<input id="email" type="email" name="email" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<label for="email2">Confirm email</label>
-						<input id="email2" type="email" name="email2" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email2') ?>" required>
+						<input id="email2" type="email" name="email2" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email2') ?>" autocomplete="off" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
 						<?php echo $account->getError(Constants::$passwordsNotAlphanumeric); ?>
 						<?php echo $account->getError(Constants::$passwordCharacters); ?>
 						<label for="password">Password</label>
-						<input id="password" type="password" name="password" placeholder="Your Password" required>
+						<input id="password" type="password" name="password" placeholder="Your Password" autocomplete="off" required>
 					</p>
 					<p>
 						<label for="password2">Confirm Password</label>
-						<input id="password2" type="password" name="password2" placeholder="Your Password" required>
+						<input id="password2" type="password" name="password2" placeholder="Your Password" autocomplete="off" required>
 					</p>			
 					
 					<button type="submit" name="registerButton">SIGN UP</button>

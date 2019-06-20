@@ -79,8 +79,6 @@ include("includes/includedFiles.php");
 
 
 <nav class="optionsMenu">
-	<input type="hidden" name="songId"> <!-- (this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element -->
+	<input type="hidden" class="songId"> <!-- (this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element -->
 	<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
-	<div class="item">Item 2</div>
-	<div class="item">Item 3</div>
 </nav>

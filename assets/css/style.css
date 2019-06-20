@@ -1,489 +1,483 @@
-html, body{
-	padding: 0;
-	margin: 0;
-	height: 100%;
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
-*{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #fff;
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
 }
 
-body{
-	background-color: #181818;
-	font-size: 14px;
-	min-width: 730px;
+body {
+  background-color: #181818;
+  font-size: 14px;
+  min-width: 730px;
 }
 
-#nowPlayingBarContainer{
-	width: 100%;
-	background-color: #282828;
-	bottom: 0;
-	position: fixed;
-	min-width: 620px;
+#nowPlayingBarContainer {
+  width: 100%;
+  background-color: #282828;
+  bottom: 0;
+  position: fixed;
+  min-width: 620px;
 }
 
-#nowPlayingBar{
-	display: flex;
-	height: 90px;
-	padding: 16px;
-	box-sizing: border-box;
+#nowPlayingBar {
+  display: flex;
+  height: 90px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+#nowPlayingBar .content {
+  width: 100%;
+  height: 57px;
 }
 
 #nowPlayingLeft,
-#nowPlayingRight{
-	width: 30%;
-	min-width: 180px;
+#nowPlayingRight {
+  width: 30%;
+  min-width: 180px;
 }
 
-#nowPlayingRight{
-	position: relative;
-	margin-top: 16px;
+#nowPlayingRight {
+  position: relative;
+  margin-top: 16px;
 }
 
-#nowPlayingCenter{
-	width: 40%;
-	max-width: 700px;
-	display: flex;
-	flex-direction: column;
+#nowPlayingCenter {
+  width: 40%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
 }
 
-#nowPlayingBar .content{
-	width: 100%;
-	height: 57px;
+.playerControls .buttons {
+  margin: 0 auto;
+  display: table;
 }
 
-.playerControls .buttons{
-	margin: 0 auto;
-	display: table;
+.controlButton {
+  background-color: transparent;
+  border: none;
+  vertical-align: middle;
+}
+.controlButton img {
+  width: 20px;
+  height: 20px;
+}
+.controlButton img:hover {
+  /* background-color: rgba(17,17,17, 0.06); */
+  background-color: gray;
+}
+.controlButton.play img, .controlButton.pause img {
+  width: 32px;
+  height: 32px;
+}
+.controlButton:hover {
+  cursor: pointer;
 }
 
-.controlButton{
-	background-color: transparent;
-	border: none;
-	vertical-align: middle;
+.progressTime {
+  color: #a0a0a0;
+  font-size: 11px;
+  min-width: 40px;
+  text-align: center;
 }
 
-.controlButton img{
-	width: 20px;
-	height: 20px;
+.playbackBar {
+  display: flex;
+}
+.playbackBar .progressBar {
+  margin-top: 3px;
 }
 
-.controlButton.play img,
-.controlButton.pause img{
-	width: 32px;
-	height: 32px;
+.progressBar {
+  width: 100%;
+  height: 12px;
+  display: inline-flex;
+  cursor: pointer;
 }
 
-.controlButton:hover{
-	cursor: pointer;
+.progressBarBg {
+  background-color: #404040;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
 }
 
-.progressTime{
-	color: #a0a0a0;
-	font-size: 11px;
-	min-width: 40px;
-	text-align: center;
+.progress {
+  background-color: #a0a0a0;
+  height: 4px;
+  width: 0;
+  border-radius: 2px;
 }
 
-.playbackBar{
-	display: flex;
+#nowPlayingLeft .albumArtWork {
+  height: 100%;
+  max-width: 57px;
+  margin-right: 15px;
+  float: left;
+  background-size: cover;
+  border: 1px solid white;
+}
+#nowPlayingLeft .trackInfo {
+  display: table;
+}
+#nowPlayingLeft .trackInfo .trackName {
+  margin: 6px 0;
+  display: inline-block;
+  width: 100%;
+}
+#nowPlayingLeft .trackInfo .artistName span {
+  font-size: 12px;
+  color: #a0a0a0;
 }
 
-.progressBar{
-	width: 100%;
-	height: 12px;
-	display: inline-flex;
-	cursor: pointer;
+.volumeBar {
+  width: 180px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+.volumeBar .progressBar {
+  width: 125px;
 }
 
-.progressBarBg{
-	background-color: #404040;
-	height: 4px;
-	width: 100%;
-	border-radius: 2px;
+#topContainer {
+  min-height: 100%;
+  width: 100%;
 }
 
-.progress{
-	background-color: #a0a0a0;
-	height: 4px;
-	width: 0;
-	border-radius: 2px;
+#navBarContainer {
+  background-color: #000;
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.playbackBar .progressBar{
-	margin-top: 3px; 
+.navBar {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+.navBar .group {
+  border-top: 1px solid #a0a0a0;
+  padding: 10px 0;
 }
 
-#nowPlayingLeft .albumArtWork{
-	height: 100%;
-	max-width: 57px;
-	margin-right: 15px;
-	float: left;
-	background-size: cover;
-	border: 1px solid white;
+.logo {
+  margin-bottom: 15px;
+}
+.logo img {
+  width: 32px;
 }
 
-.trackInfo{
-	display: table;
+.navItem {
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  display: block;
+  letter-spacing: 1px;
+  position: relative;
 }
 
-#nowPlayingLeft .trackInfo{
-	display: table;
+.navItemLink {
+  color: #a0a0a0;
+  text-decoration: none;
+}
+.navItemLink:hover {
+  color: #ffffff;
+}
+.navItemLink .icon {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  width: 25px;
 }
 
-#nowPlayingLeft .trackInfo .trackName{
-	margin: 6px 0;
-	display: inline-block;
-	width: 100%;
+#mainViewContainer {
+  margin-left: 220px;
+  padding-bottom: 90px;
+  width: calc(100% - 220px);
 }
 
-#nowPlayingLeft .trackInfo .artistName span{
-	font-size: 12px;
-	color: #a0a0a0;
+#mainContent {
+  padding: 0 20px;
 }
 
-.volumeBar{
-	width: 180px;
-	position: absolute;
-	right: 0;
-	cursor: pointer;
+.pageHeadingBig {
+  padding: 20px;
+  text-align: center;
 }
 
-.volumeBar .progressBar{
-	width: 125px;
+.gridViewItem {
+  display: inline-block;
+  margin-right: 20px;
+  width: 29%;
+  max-width: 200px;
+  min-width: 150px;
+  margin-bottom: 20px;
+}
+.gridViewItem img {
+  width: 100%;
+}
+.gridViewItem a {
+  text-decoration: none;
 }
 
-#topContainer{
-	min-height: 100%;
-	width: 100%;
+.gridViewInfo {
+  font-weight: 300;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-#navBarContainer{
-	background-color: #000;
-	width: 220px;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
+.entityInfo {
+  padding: 40px 0 10px 0;
+  display: inline-block;
+  width: 100%;
+}
+.entityInfo .leftSection {
+  width: 30%;
+  float: left;
+  max-width: 250px;
+}
+.entityInfo .leftSection img {
+  width: 100%;
+}
+.entityInfo .rightSection {
+  width: 70%;
+  float: left;
+  padding: 5px 10px 5px 40px;
+  box-sizing: border-box;
+}
+.entityInfo .rightSection h2 {
+  margin-top: 0;
+}
+.entityInfo .rightSection p {
+  color: #939393;
+  font-weight: 200;
 }
 
-.navBar{
-	padding: 25px;
-	display: flex;
-	flex-direction: column;
-	-ms-flex-direction: column;
+.tracklist {
+  padding: 0;
 }
 
-.logo{
-	margin-bottom: 15px;
+.tracklistRow {
+  height: 40px;
+  padding: 15px 10px;
+  list-style: none;
+}
+.tracklistRow span {
+  color: #939393;
+  font-weight: 200;
+}
+.tracklistRow:hover {
+  background-color: #282828;
+}
+.tracklistRow:hover .trackCount img {
+  visibility: visible;
+}
+.tracklistRow:hover .trackCount span {
+  visibility: hidden;
+}
+.tracklistRow:hover .trackOptions img {
+  visibility: visible;
+}
+.tracklistRow .trackCount {
+  width: 8%;
+  float: left;
+}
+.tracklistRow .trackCount img {
+  width: 20px;
+  visibility: hidden;
+  position: absolute;
+  cursor: pointer;
+}
+.tracklistRow .trackInfo {
+  width: 75%;
+  float: left;
+}
+.tracklistRow .trackInfo span {
+  display: block;
+}
+.tracklistRow .trackInfo .trackName {
+  color: #fff;
+  padding-bottom: 7px;
+}
+.tracklistRow .trackOptions {
+  width: 5%;
+  float: left;
+  text-align: right;
+}
+.tracklistRow .trackOptions img {
+  width: 15px;
+  visibility: hidden;
+}
+.tracklistRow .trackDuration {
+  width: 12%;
+  float: left;
+  text-align: right;
 }
 
-.logo img{
-	width: 32px;
+.artistInfo {
+  text-align: center;
 }
 
-.navBar .group{
-	border-top: 1px solid #a0a0a0;
-	padding: 10px 0;
+.button {
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: transparent;
+  font-weight: 500;
+  letter-spacing: 2px;
+  border: 2px solid #fff;
+  border-radius: 500px;
+  padding: 15px;
+  min-width: 130px;
+}
+.button.green {
+  background-color: #2ebd59;
+  border-color: #2ebd59;
 }
 
-.navItem{
-	padding: 10px 0;
-	font-size: 14px;
-	font-weight: 700;
-	display: block;
-	letter-spacing: 1px;
-	position: relative;
-}
-
-.navItemLink{
-	color: #a0a0a0;
-	text-decoration: none;
-}
-
-.navItemLink:hover{
-	color: #ffffff;
-}
-
-.navItemLink .icon{
-	position: absolute;
-	right: 0;
-	top: 6px;
-	width: 25px;
-}
-
-#mainViewContainer{
-	margin-left: 220px;
-	padding-bottom: 90px;
-	width: calc(100% - 220px);
-}
-
-#mainContent{
-	padding: 0 20px;
-}
-
-.pageHeadingBig{
-	padding: 20px;
-	text-align: center;
-}
-
-.gridViewItem{
-	display: inline-block;
-	margin-right: 20px;
-	width: 29%;
-	max-width: 200px;
-	min-width: 150px;
-	margin-bottom: 20px;
-}
-
-.gridViewItem img{
-	width: 100%;
-}
-
-.gridViewInfo{
-	font-weight: 300;
-	text-align: center;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-}
-
-.gridViewItem a{
-	text-decoration: none;
-}
-
-.entityInfo{
-	padding: 40px 0 10px 0;
-	display: inline-block;
-	width: 100%;
-}
-
-.entityInfo .leftSection{
-	width: 30%;
-	float: left;
-	max-width: 250px;
-}
-
-.entityInfo .leftSection img{
-	width: 100%;
-}
-
-.entityInfo .rightSection{
-	width: 70%;
-	float: left;
-	padding: 5px 10px 5px 40px;
-	box-sizing: border-box;
-}
-
-.entityInfo .rightSection h2{
-	margin-top: 0;
-}
-
-.entityInfo .rightSection p{
-	color: #939393;
-	font-weight: 200;
-}
-
-.tracklist{
-	padding: 0;
-}
-
-.tracklistRow{
-	height: 40px;
-	padding: 15px 10px;
-	list-style: none;
-}
-
-.tracklistRow span{
-	color: #939393;
-	font-weight: 200;
-}
-
-.tracklistRow:hover{
-	background-color: #282828;
-}
-
-.tracklistRow .trackCount{
-	width: 8%;
-	float: left;
-}
-
-.tracklistRow .trackCount img{
-	width: 20px;
-	visibility: hidden;
-	position: absolute;
-	cursor: pointer;
-}
-
-.tracklistRow:hover .trackCount img{
-	visibility: visible;
-}
-
-.tracklistRow:hover .trackCount span{
-	visibility: hidden;
-}
-
-.tracklistRow .trackInfo{
-	width: 75%;
-	float: left;
-}
-
-.tracklistRow .trackInfo span{
-	display: block;
-}
-
-.tracklistRow .trackOptions{
-	width: 5%;
-	float: left;
-	text-align: right;
-}
-
-.tracklistRow .trackOptions img{
-	width: 15px;
-	visibility: hidden;
-}
-
-.tracklistRow:hover .trackOptions img{
-	visibility: visible;
-}
-
-.tracklistRow .trackDuration{
-	width: 12%;
-	float: left;
-	text-align: right;
-}
-
-.tracklistRow .trackInfo .trackName{
-	color: #fff;
-	padding-bottom: 7px;
-}
-
-.artistInfo{
-	text-align: center;
-}
-
-.button{
-	color: #fff;
-	cursor: pointer;
-	margin-bottom: 10px;
-	background-color: transparent;
-	font-weight: 500;
-	letter-spacing: 2px;
-	border: 2px solid #fff;
-	border-radius: 500px;
-	padding: 15px;
-	min-width: 130px;
-}
-
-.button.green{
-	background-color: #2ebd59;
-	border-color: #2ebd59;
-}
-
-.borderBottom{
-	border-bottom: 1px solid #939393;
-	margin-bottom: 20px;
+.borderBottom {
+  border-bottom: 1px solid #939393;
+  margin-bottom: 20px;
 }
 
 .tracklistContainer h2,
 .gridViewContainer h2,
-.artistContainer h2{
-	text-align: center;
+.artistContainer h2 {
+  text-align: center;
 }
 
-[role="link"]{
-	cursor: pointer;
+[role=link] {
+  cursor: pointer;
 }
 
-.searchContainer{
-	background-color: #242424;
-	padding: 20px 28px;
+.searchContainer {
+  background-color: #242424;
+  padding: 20px 28px;
+}
+.searchContainer h4 {
+  margin: 0;
+  font-weight: 300;
+}
+.searchContainer .searchInput {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 62px;
+  letter-spacing: 2px;
 }
 
-.searchContainer h4{
-	margin: 0;
-	font-weight: 300;
+input:focus {
+  outline: none;
 }
 
-.searchContainer .searchInput{
-	width: 100%;
-	background-color: transparent;
-	border: none;
-	color: #fff;
-	font-weight: 700;
-	font-size: 62px;
-	letter-spacing: 2px;
+span[role=link]:focus {
+  outline: none;
 }
 
-input:focus{
-	outline: none;
+.searchResultRow {
+  padding: 15px 10px;
+}
+.searchResultRow:hover {
+  background-color: #282828;
+}
+.searchResultRow .artistName span {
+  color: #fff;
 }
 
-span[role="link"]:focus{
-	outline: none;
+.noResults {
+  margin: 15px;
+  display: block;
 }
 
-.searchResultRow{
-	padding: 15px 10px;
+.buttonItems .button {
+  display: block;
+  margin: 0 auto 20px auto;
 }
 
-.searchResultRow:hover{
-	background-color: #282828;
+.playlistsContainer {
+  padding: 10px 0;
 }
 
-.searchResultRow .artistName span{
-	color: #fff;
+.playlistImage {
+  border: 3px solid #282828;
+  padding: 10px;
 }
 
-.noResults{
-	margin: 15px;
-	display: block;
+.optionsMenu {
+  position: fixed;
+  background-color: #282828;
+  width: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: none;
+}
+.optionsMenu .item {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  font-weight: 400;
+  color: rgba(147, 147, 147, 0.8);
+  cursor: pointer;
+  height: 40px;
+  background-color: #282828;
+  font-size: 14px;
+}
+.optionsMenu .item:hover {
+  color: #fff;
+  background-color: #333;
+  border-color: #333;
 }
 
-.buttonItems .button{
-	display: block;
-	margin: 0 auto 20px auto;
+.optionsMenu select {
+  border: none;
+  -webkit-appearance: none;
+  /*Works for safari and chrome*/
+  -moz-appearance: none;
+  /*Works for firefox*/
 }
 
-.playlistsContainer{
-	padding: 10px 0;
+.userInfo h1 {
+  text-align: center;
 }
 
-.playlistImage{
-	border: 3px solid #282828;
-	padding: 10px;
+.userDetails {
+  padding: 20px;
+}
+.userDetails .container h2 {
+  text-align: center;
+}
+.userDetails .container input[type=text],
+.userDetails .container input[type=password],
+.userDetails .container button {
+  display: block;
+  margin: 16px auto;
+}
+.userDetails .container input[type=text],
+.userDetails .container input[type=password] {
+  height: 50px;
+  width: 100%;
+  background: #1f1f1f;
+  border: none;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 0 20px;
+}
+.userDetails .container .message {
+  color: #2ebd59;
+  font-weight: 300;
 }
 
-.optionsMenu{
-	position: fixed;
-	background-color: #282828;
-	width: 200px;
-	border: 1px solid rgba(0,0,0,0.15);
-	z-index: 1000;
-	display: none;
-}
-
-.optionsMenu .item{
-	width: 100%;
-	padding: 12px 20px;
-	box-sizing: border-box;
-	font-weight: 400;
-	color: rgba(147, 147, 147, 0.8);
-	cursor: pointer;
-	height: 40px;
-	background-color: #282828;
-	font-size: 14px;
-}
-
-.optionsMenu .item:hover{
-	color: #fff;
-	background-color: #333;
-	border-color: #333;
-}
-
-.optionsMenu select{
-	border: none;
-	-webkit-appearance: none;  /*Works for safari and chrome*/
-	-moz-appearance: none; /*Works for firefox*/
-}
+/*# sourceMappingURL=style.css.map */

@@ -52,8 +52,9 @@
 							<span class='artistName'>" . $albumArtist->getName() . "</span>
 						</div>
 						<div class='trackOptions'>
-							<img class='optionsButton' src='assets/images/icons/more.png'>
-						</div>
+								<input type='hidden' class='songId' value='" . $albumSong->getId() . "'>
+								<img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionsMenu(this)'>
+							</div>
 						<div class='trackDuration'>
 							<span class='duration'>" . $albumSong->getDuration() . "</span>
 						</div>
@@ -89,5 +90,9 @@
 					</div>";
 			}
 		?>
-
 </div>
+
+<nav class="optionsMenu">
+	<input type="hidden" class="songId"> <!-- (this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element -->
+	<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
+</nav>
