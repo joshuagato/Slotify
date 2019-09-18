@@ -1,6 +1,14 @@
 <!-- The Header -->
-<?php
-	include("includes/includedFiles.php");
-?>
+<?php //include("includes/header.php"); ?>
+<?php include("includes/includedFiles.php"); ?>
 
-<script type="text/javascript">openPage("browse.php")</script>
+
+
+<!-- Main Content  -->
+
+<script>openPage("browse.php")</script>
+
+
+
+<!-- The Footer -->
+<?php //include("includes/footer.php"); ?>

@@ -7,9 +7,10 @@
 		private $title;
 		private $artistId;
 		private $albumId;
+		private $path;
 		private $genre;
 		private $duration;
-		private $path;
+		
 
 		public function __construct($con, $id){
 			$this->con = $con;
@@ -20,37 +21,44 @@
 			$this->title = $this->mysqliData['title'];
 			$this->artistId = $this->mysqliData['artist'];
 			$this->albumId = $this->mysqliData['album'];
+			$this->path = $this->mysqliData['path'];
 			$this->genre = $this->mysqliData['genre'];
 			$this->duration = $this->mysqliData['duration'];
-			$this->path = $this->mysqliData['path'];
+			
 		}
 
-		public function getTitle(){
-			return $this->title;
-		}
-
-		public function getId(){
+		public function getId() {
 			return $this->id;
 		}
 
-		public function getArtist(){
+		public function getTitle() {
+			return $this->title;
+		}
+
+		public function getArtist() {
 			return new Artist($this->con, $this->artistId);
 		}
 
-		public function getAlbum(){
+		public function getAlbum() {
 			return new Album($this->con, $this->albumId);
 		}
 
-		public function getPath(){
+		public function getPath() {
 			return $this->path;
 		}
 
-		public function getDuration(){
+		public function getGenre() {
+			return $this->genre;
+		}
+
+		public function getDuration() {
 			return $this->duration;
 		}
 
-		public function getMysqliData(){
+		public function getMysqliData() {
 			return $this->mysqliData;
 		}
+
+		
 	}
 ?>

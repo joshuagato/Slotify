@@ -58,11 +58,11 @@
 					<p>
 						<?php echo $account->getError(Constants::$loginFailed); ?>
 						<label for="loginUsername">Username</label>
-						<input id="loginUsername" type="text" name="loginUsername" placeholder="e.g joshgato" value="<?php getInputValue('loginUsername') ?>" autocomplete="off" required>
+						<input id="loginUsername" type="text" name="loginUsername" placeholder="e.g jgato410" value="<?php getInputValue('loginUsername') ?>" required>
 					</p>
 					<p>
 						<label for="loginPassword">Password</label>
-						<input id="loginPassword" type="password" name="loginPassword" placeholder="Your Password" autocomplete="off" required>
+						<input id="loginPassword" type="password" name="loginPassword" placeholder="Your Password" required>
 					</p>
 					
 					<button type="submit" name="loginButton">LOG IN</button>
@@ -70,7 +70,7 @@
 					<div class="hasAccountText">
 						<span id="hideLogin">Don't have an account yet? Signup here.</span>
 					</div>
-				</form> <!-- End  loginForm-->
+				</form>
 
 				<form id="registerForm" action="" method="post">
 					<h2>Create your free account</h2>
@@ -78,39 +78,39 @@
 						<?php echo $account->getError(Constants::$usernameCharacters); ?>
 						<?php echo $account->getError(Constants::$usernameTaken); ?>
 						<label for="username">Username</label>
-						<input id="username" type="text" name="username" placeholder="e.g joshgato" value="<?php getInputValue('username') ?>" autocomplete="off" required>
+						<input id="username" type="text" name="username" placeholder="e.g jgato410" value="<?php getInputValue('username') ?>" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$firstNameCharacters); ?>
 						<label for="firstName">First name</label>
-						<input id="firstName" type="text" name="firstName" placeholder="e.g Joshua" value="<?php getInputValue('firstName') ?>" autocomplete="off" required>
+						<input id="firstName" type="text" name="firstName" placeholder="e.g Joshua" value="<?php getInputValue('firstName') ?>" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$lastNameCharacters); ?>
 						<label for="lastName">Last name</label>
-						<input id="lastName" type="text" name="lastName" placeholder="e.g Gato" value="<?php getInputValue('lastName') ?>" autocomplete="off" required>
+						<input id="lastName" type="text" name="lastName" placeholder="e.g Gato" value="<?php getInputValue('lastName') ?>" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
 						<?php echo $account->getError(Constants::$emailInvalid); ?>
 						<?php echo $account->getError(Constants::$emailTaken); ?>
 						<label for="email">Email</label>
-						<input id="email" type="email" name="email" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email') ?>" autocomplete="off" required>
+						<input id="email" type="email" name="email" placeholder="e.g joshuagato@gmail.com" value="<?php getInputValue('email') ?>" required>
 					</p>
 					<p>
 						<label for="email2">Confirm email</label>
-						<input id="email2" type="email" name="email2" placeholder="e.g joshgato@gmail.com" value="<?php getInputValue('email2') ?>" autocomplete="off" required>
+						<input id="email2" type="email" name="email2" placeholder="e.g joshuagato@gmail.com" value="<?php getInputValue('email2') ?>" required>
 					</p>
 					<p>
 						<?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
 						<?php echo $account->getError(Constants::$passwordsNotAlphanumeric); ?>
 						<?php echo $account->getError(Constants::$passwordCharacters); ?>
 						<label for="password">Password</label>
-						<input id="password" type="password" name="password" placeholder="Your Password" autocomplete="off" required>
+						<input id="password" type="password" name="password" placeholder="Your Password" required>
 					</p>
 					<p>
 						<label for="password2">Confirm Password</label>
-						<input id="password2" type="password" name="password2" placeholder="Your Password" autocomplete="off" required>
+						<input id="password2" type="password" name="password2" placeholder="Your Password" required>
 					</p>			
 					
 					<button type="submit" name="registerButton">SIGN UP</button>
@@ -118,8 +118,8 @@
 					<div class="hasAccountText">
 						<span id="hideRegister">Already have an account? Log in here.</span>
 					</div>
-				</form> <!-- End registerForm -->
-			</div> <!-- End inputContainer -->
+				</form>
+			</div>
 
 			<div id="loginText">
 				<h1>Get great music, right now</h1>
@@ -131,7 +131,7 @@
 				</ul>
 			</div>
 
-		</div> <!-- End loginContainer -->
-	</div> <!-- End background -->
+		</div>
+	</div>
 </body>
 </html>

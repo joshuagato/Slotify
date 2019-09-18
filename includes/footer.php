@@ -2,11 +2,14 @@
 
 			</div>
 
+
 		</div>
 
 		<!-- nowPlayingBarContainer goes here -->
-		<?php include("includes/nowPlayingBar.php"); ?>
+		<?php // include("includes/nowPlayingBarContainer.php"); ?>
+		
+		<?php include("includes/nowPlayingBar333.php"); ?>
+		
 	</div>
-	<!-- <script type="text/javascript" src="assets/js/script.js"></script> -->
 </body>
 </html>

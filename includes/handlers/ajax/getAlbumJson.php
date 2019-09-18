@@ -11,7 +11,6 @@ if(isset($_POST['albumId'])){
 
 	echo json_encode($resultArray);
 	// echo "HELL NO!";
-
 }
 
 

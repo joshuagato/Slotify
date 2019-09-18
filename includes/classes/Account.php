@@ -62,7 +62,7 @@
 		private function validateUsername($un){
 			if(strlen($un) > 25 || strlen($un) < 5){
 				array_push($this->errorArray, Constants::$usernameCharacters);
-				return; //it exits from this function immediately and does not bother to check the other if statements when this one fails
+				return;
 			}
 
 			$checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
