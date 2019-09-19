@@ -34,7 +34,6 @@
 						
 						<div class='gridViewInfo'>"
 
-								// . $row['name'] .
 							. $playlist->getName() .
 
 						"</div>

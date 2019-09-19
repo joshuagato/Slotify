@@ -13,6 +13,7 @@ html, body {
   height: 100%;
   width: 100%;
 }
+
 #loginContainer {
   width: 80%;
   margin: 0 auto;
@@ -92,6 +93,7 @@ html, body {
   border-bottom: 1px solid white;
   height: 27px;
   width: 100%;
+  outline: none;
 }
 #inputContainer label {
   color: #fff;

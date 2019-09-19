@@ -1,5 +1,5 @@
 <div id="navBarContainer">
-	
+
 	<nav class="navBar">
 		
 		<span class="logo" role="link" tabindex="0" onclick="openPage('index.php')">
@@ -28,13 +28,11 @@
 			</div>
 
 			<div class="navItem">
-				<span role="link" tabindex="0" onclick="openPage('profile.php')" class="navItemLink">Joshua Gato</span>
+				<span role="link" tabindex="0" onclick="openPage('settings.php')" class="navItemLink"><?php echo $userLoggedIn->getFirstAndLastName() ?></span>
 			</div>
 
 		</div>
 
-
-
 	</nav>
-
+	
 </div>

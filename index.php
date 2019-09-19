@@ -1,5 +1,4 @@
 <!-- The Header -->
-<?php //include("includes/header.php"); ?>
 <?php include("includes/includedFiles.php"); ?>
 
 
@@ -11,4 +10,4 @@
 
 
 <!-- The Footer -->
-<?php //include("includes/footer.php"); ?>
+<!-- From includedFile.php file -->

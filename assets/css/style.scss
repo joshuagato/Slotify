@@ -244,7 +244,8 @@ body {
     width: calc(100% - 220px);
     
     .toggle-menu {
-        display: block;
+        // display: block;
+        display: none;
         position: fixed;
         // float: left;
         // clear: both;
@@ -488,7 +489,7 @@ span[role="link"]:focus {
 
 .buttonItems {
 
-    .button{
+    .button {
         display: block;
         margin: 0 auto 20px auto;
     }
@@ -507,7 +508,7 @@ span[role="link"]:focus {
 	position: fixed;
 	background-color: #282828;
 	width: 200px;
-	border: 1px solid rgba(0,0,0,0.15);
+	border: 1px solid rgba(0, 0, 0, 0.15);
 	z-index: 1000;
     display: none;
 
@@ -527,15 +528,12 @@ span[role="link"]:focus {
             background-color: #333;
             border-color: #333;
         }
-    }
-}
 
-.optionsMenu {
-
-    select {
-        border: none;
-        -webkit-appearance: none;  /*Works for safari and chrome*/
-        -moz-appearance: none; /*Works for firefox*/
+        select {
+            border: none;
+            -webkit-appearance: none;  /*Works for safari and chrome*/
+            -moz-appearance: none; /*Works for firefox*/
+        }
     }
 }
 

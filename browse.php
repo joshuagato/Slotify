@@ -1,8 +1,6 @@
 <!-- The Header -->
 <?php
-	// include("includes/header.php");
 	include("includes/includedFiles.php");
-	// include("includes/header.php");
 ?>
 
 <!--  -->
@@ -32,6 +30,4 @@
 
 
 <!-- The Footer -->
-<?php 
-// include("includes/footer.php"); 
-?>
+<!-- From the includedFiles.php file -->

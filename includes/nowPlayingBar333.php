@@ -100,6 +100,7 @@
 
 
 
+
 	function prevSong() {
 		if(audioElement.audio.currentTime >= 3 || currentIndex == 0) {
 			audioElement.setTime(0);
@@ -220,14 +221,17 @@
 			$.post("includes/handlers/ajax/getArtistJson.php", { artistId: track.artist }, function(data) {
 				var artist = JSON.parse(data);
 
-				$(".artistName span").text(artist.name);
+				$(".trackInfo .artistName span").text(artist.name);
+				$(".trackInfo .artistName span").attr("onclick", "openPage('artist.php?id=" + artist.id + "')");
 			});
 
 			// Getting the album artworkPath from the albums table and inserting it into the src attribute of the img tag
 			$.post("includes/handlers/ajax/getAlbumJson.php", { albumId: track.album }, function(data) {
 				var album = JSON.parse(data);
 
-				$(".albumLink img").attr('src', album.artworkPath);
+				$(".content .albumLink img").attr('src', album.artworkPath);
+				$(".content .albumLink img").attr("onclick", "openPage('album.php?id=" + album.id + "')");
+				$(".trackInfo .trackName span").attr("onclick", "openPage('album.php?id=" + album.id + "')");
 			});
 			
 			audioElement.setTrack(track);

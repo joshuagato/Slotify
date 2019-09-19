@@ -9,8 +9,6 @@
 		$row = mysqli_fetch_array($orderIdQuery);
 		$order = $row['playlistOrder'];
 
-		// echo $order;
-
 		$query = mysqli_query($con, "INSERT INTO playlistSongs VALUES('', '$songId', '$playlistId', '$order')");
 	}
 	

@@ -36,7 +36,7 @@
 			foreach($songIdArray as $songId){
 
 				if ($i > 5) {
-					break;
+					break;  //Break out of the outer loop
 				}
 
 				$albumSong = new Song($con, $songId);
@@ -96,3 +96,6 @@
 	<input type="hidden" class="songId"> <!-- (this).prev('songId') will not refer to the one at the top, but rather that which is the immediate previous sibling of the this referred to element -->
 	<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
 </nav>
+
+<!-- Footer -->
+<!-- From the includedFiles.php file -->

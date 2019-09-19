@@ -1,18 +1,17 @@
 <?php 
 	include("includes/includedFiles.php");
 
-	if(isset($_GET['term'])){
+	if(isset($_GET['term'])) {
 		$term = urldecode($_GET['term']); //urldecode is able to transform %20 into a white space
 	}
-	else{
+	else {
 		$term = "";
 	}
 ?>
 
 <div class="searchContainer">
 	<h4>Search for an artist, album or song</h4>
-	<input type="text" class="searchInput" value="<?php echo $term; ?>" placeholder="Start typing..." onfocus="this.value = this.value">
-	<!-- <input type="search" class="searchInput" value="<?php //echo $term; ?>" placeholder="Start typing..." onfocus="this.value = this.value"> -->
+	<input type="search" class="searchInput" value="<?php echo $term; ?>" onfocus="this.value = this.value" placeholder="Start typing...">
 </div>
 
 
@@ -21,44 +20,21 @@
 	$(".searchInput").focus();
 
 	$(function() {
-		// var timer;
 
 		$(".searchInput").keyup(function() {
 			clearTimeout(timer);
 
 			timer = setTimeout(function() {
-				var val = $(".searchInput").val();
-				openPage("search.php?term=" + val);
+				var value = $(".searchInput").val();
+				openPage("search.php?term=" + value);
 			}, 2000);
-
-		})
-
-
-	})
-
-	// $(".searchInput").focus();
-	// // console.log(this.value);
-
-	// $(function(){
-
-	// 	// document.querySelector('.searchInput').keyup(function(){
-	// 	$(".searchInput").keyup(function(){
-	// 		clearTimeout(timer);
-
-	// 		timer = setTimeout(function(){
-	// 			// console.log('Hi!');
-	// 			var val = $(".searchInput").val();
-	// 			openPage("search.php?term=" + val);
-	// 		}, 2000);
-
-	// 		// console.log(this.value);
-	// 	})
-	// })
+		});
+	});
 
 </script>
 
 
-<?php if($term == ""){ exit();} ?>
+<?php if($term == "") exit(); ?>
 
 <!-- Search through the list of songs -->
 <div class="trackListContainer borderBottom">
@@ -67,14 +43,14 @@
 		<?php
 
 			$songsQuery = mysqli_query($con, "SELECT id FROM songs WHERE title LIKE '$term%' LIMIT 10");
-			if(mysqli_num_rows($songsQuery) == 0){
+			if(mysqli_num_rows($songsQuery) == 0) {
 				echo "<span class='noResults'> No songs found matching " . $term . "</span>";
 			}
 
 			$songIdArray = array();
 
 			$i = 1;
-			while($row = mysqli_fetch_array($songsQuery)){
+			while($row = mysqli_fetch_array($songsQuery)) {
 
 				if ($i > 15) {
 					break;
